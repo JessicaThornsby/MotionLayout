@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@+id/starting_set"
+        motion:constraintSetEnd="@+id/ending_set"
+        motion:duration="3000">
+
+        <OnSwipe
+            motion:touchAnchorId="@+id/button"
+            motion:touchAnchorSide="right"
+            motion:dragDirection="dragRight" />
+
+
+        <KeyFrameSet>
+            <KeyPosition
+                motion:target="@+id/button"
+                motion:keyPositionType="parentRelative"
+                motion:percentY="1"
+                motion:framePosition="50"/>
+
+            <KeyCycle
+                motion:target="@+id/button"
+                motion:framePosition="50"
+                android:rotation="25"
+                motion:waveShape="sin"
+                motion:wavePeriod="1" />
+
+            <KeyAttribute
+                motion:target="@id/button"
+                android:scaleX="2"
+                android:scaleY="2"
+                motion:framePosition="50" />
+
+        </KeyFrameSet>
+
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/starting_set">
+        <Constraint android:id="@+id/button"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="#03DAC6" />
+        </Constraint>
+    </ConstraintSet>
+
+
+
+    <ConstraintSet android:id="@+id/ending_set">
+        <Constraint android:id="@+id/button"
+            motion:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="#6200EE" />
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>
